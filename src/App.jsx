@@ -12,7 +12,6 @@ function App() {
   const URL = 'https://users-crud1.herokuapp.com/users/'
 
 
-
   const getAllusers = () => {
     axios.get(URL)
       .then(res => { setRespond(res.data) })
@@ -42,26 +41,19 @@ function App() {
   }
 
 
-  const updateUsers = (id, data) => {
 
-    const URL2 = `https://users-crud1.herokuapp.com/users/${id}/`
-
-    axios.put(URL2)
-
-      .then(res => { console.log(res.data) })
-      .catch(err => (err))
-      .finally(() => getAllusers())
-  }
   const hideform = () => setHide(!hide)
 
   return (
 
     <div className="App">
-      <button onClick={hideform} className='app_button'>{hide ? "Hide me please" : "Show me now "}</button>
+      <button onClick={hideform} className='app_button'>{hide ? "Hide Form "  : "Show Form "}</button>
 
       {hide &&
         <UsersForm createusers={createUsers}
-          update={updateUsers} />}
+          getAllusers={getAllusers}
+          setpass={setpass}
+          pass={pass} />}
 
       <section className='app_div'>
         {
